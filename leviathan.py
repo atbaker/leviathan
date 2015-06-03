@@ -64,17 +64,20 @@ def send_name():
     # Extract the transcription
     transcription = request.values
 
-    # status = transcription['TranscriptionStatus']
+    status = transcription['TranscriptionStatus']
 
-    # if status == 'failed':
-    #     # Maybe send a push notification saying we couldn't figure out who was calling
-    #     return ('', 200)
+    if status == 'failed':
+        # Say the transcription failed
+        name = '(transcription unavailable)'
+    else:
+        name = transcription['TranscriptionText']
+        # name = 'Andrew Baker'
 
     phone_number = transcription['From']
     # phone_number = "+17036230231"
+
     humanized_phone_number = "({0}) {1}-{2}".format(phone_number[2:5], phone_number[5:8], phone_number[8:])
-    name = transcription['TranscriptionText']
-    # name = 'Andrew Baker'
+
     sid = transcription['CallSid']
 
     # Send a push notification
@@ -108,14 +111,15 @@ def send_purpose():
     # Extract the transcription
     transcription = request.values
 
-    # status = transcription['TranscriptionStatus']
+    status = transcription['TranscriptionStatus']
 
-    # if status == 'failed':
-    #     # Maybe send a push notification saying we couldn't figure out who was calling
-    #     return ('', 200)
+    if status == 'failed':
+        # Say the transcription failed
+        purpose = '(transcription unavailable)'
+    else:
+        purpose = transcription['TranscriptionText']
+        # purpose = "I'm from the IRS and we're coming to arrest you."
 
-    purpose = transcription['TranscriptionText']
-    # purpose = "I'm from the IRS and we're coming to arrest you."
     sid = transcription['CallSid']
 
     # Send a push notification
