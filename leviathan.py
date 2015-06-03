@@ -102,7 +102,7 @@ def send_name():
 
     return ('', 200)
 
-@app.route('/name', methods=['GET', 'POST'])
+@app.route('/purpose', methods=['GET', 'POST'])
 def send_purpose():
     """Forwards a caller's purpose to the user"""
     # Extract the transcription
@@ -161,6 +161,10 @@ def receive_decision():
         # Reject the call
         client.calls.update(sid, method="POST",
             url=urljoin(HOSTNAME, '/hangup'))
+    elif decision == 'ask':
+        # Ask the caller why they're calling
+        client.calls.update(sid, method="POST",
+            url=urljoin(HOSTNAME, '/ask-purpose'))
 
     return ('', 200)
 
