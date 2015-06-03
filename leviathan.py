@@ -70,7 +70,7 @@ def send_name():
         # Say the transcription failed
         name = '(transcription unavailable)'
     else:
-        name = transcription['TranscriptionText']
+        name = transcription['TranscriptionText'].strip('.')
         # name = 'Andrew Baker'
 
     phone_number = transcription['From']
