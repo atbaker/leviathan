@@ -29,7 +29,7 @@ def get_name():
     resp.say(intro, voice='woman', language='en-GB')#  voice='Alice', language='en-GB')
 
     # Record the caller's response
-    resp.record(maxlength=3, action='/hold', playBeep=False, transcribe=True, transcribeCallback='/name')
+    resp.record(maxlength=4, action='/hold', playBeep=True, transcribe=True, transcribeCallback='/name')
 
     return str(resp)
 
@@ -194,7 +194,7 @@ def ask_purpose():
     resp.say("Hello again. What is this call concerning?", voice='woman', language='en-GB')
 
     # Record their response
-    resp.record(maxlength=5, action='/hold-two', playBeep=False, transcribe=True, transcribeCallback='/purpose')
+    resp.record(maxlength=7, action='/hold-two', playBeep=True, transcribe=True, transcribeCallback='/purpose')
 
     return str(resp)
 
