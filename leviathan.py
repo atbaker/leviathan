@@ -70,11 +70,11 @@ def send_name():
     #     # Maybe send a push notification saying we couldn't figure out who was calling
     #     return ('', 200)
 
-    # phone_number = transcription['From']
-    phone_number = "+17036230231"
+    phone_number = transcription['From']
+    # phone_number = "+17036230231"
     humanized_phone_number = "({0}) {1}-{2}".format(phone_number[2:5], phone_number[5:8], phone_number[8:])
-    # name = transcription['TranscriptionText']
-    name = 'Andrew Baker'
+    name = transcription['TranscriptionText']
+    # name = 'Andrew Baker'
     sid = transcription['CallSid']
 
     # Send a push notification
@@ -114,8 +114,8 @@ def send_purpose():
     #     # Maybe send a push notification saying we couldn't figure out who was calling
     #     return ('', 200)
 
-    # purpose = transcription['TranscriptionText']
-    purpose = "I'm from the IRS and we're coming to arrest you."
+    purpose = transcription['TranscriptionText']
+    # purpose = "I'm from the IRS and we're coming to arrest you."
     sid = transcription['CallSid']
 
     # Send a push notification
