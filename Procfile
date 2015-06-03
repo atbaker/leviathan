@@ -1,1 +1,1 @@
-web: python leviathan.py
+web: gunicorn leviathan:app --log-file=-
