@@ -38,7 +38,7 @@ def hold():
     """Keeps users on hold indefinitely"""
     resp = twilio.twiml.Response()
     resp.say("Please hold.", voice='woman', language='en-GB')
-    resp.play('/girl-from-ipanema', loop=0)
+    resp.play('/hold_music_one.mp3', loop=0)
 
     return str(resp)
 
@@ -47,14 +47,14 @@ def hold_two():
     """A hold track that uses the same song but at a jazzier refrain"""
     resp = twilio.twiml.Response()
     resp.say("Thank you. Please hold.", voice='woman', language='en-GB')
-    resp.play('/girl-from-ipanema', loop=0)
+    resp.play('/static/hold_music_two.mp3', loop=0)
 
     return str(resp)
 
-@app.route('/girl-from-ipanema')
-def hold_music():
+@app.route('/static/<path:path>')
+def hold_music(path):
     """Soothing hold music / some versions of Hell"""
-    return send_from_directory('', 'girl_from_ipanema.mp3')
+    return send_from_directory('static', path)
 
 @app.route('/name', methods=['GET', 'POST'])
 def send_name():
